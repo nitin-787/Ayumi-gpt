@@ -1,7 +1,33 @@
+import 'package:chatgpt/constants/text_widget.dart';
 import 'package:flutter/material.dart';
 
-Color scaffoldBackgroundColor = Colors.white;
+Color scaffoldBackgroundColor = Colors.grey;
 Color? cardColor = Colors.blue[400];
+
+List<String> models = [
+  "MOdel-1",
+  "Model-2",
+  "Model-3",
+  "Model-4",
+  "Model-5",
+  "Model-6",
+  "Model-7",
+];
+
+List<DropdownMenuItem<String>>? getModelItem() {
+  List<DropdownMenuItem<String>>? modelsitems =
+      List<DropdownMenuItem<String>>.generate(
+    models.length,
+    (index) => DropdownMenuItem(
+      value: models[index],
+      child: TextWidget(
+        label: models[index],
+        fontSize: 16,
+      ),
+    ),
+  );
+  return modelsitems;
+}
 
 final chatMessages = [
   {
