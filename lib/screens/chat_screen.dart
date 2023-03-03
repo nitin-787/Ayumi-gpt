@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:chatgpt/constants/constants.dart';
+import 'package:chatgpt/models/chat_model.dart';
 import 'package:chatgpt/providers/models_provider.dart';
 import 'package:chatgpt/services/api_service.dart';
 import 'package:chatgpt/services/services.dart';
@@ -20,18 +21,23 @@ class _ChatScreenState extends State<ChatScreen> {
   bool _isWriting = false;
 
   late TextEditingController textEditingController;
+  late FocusNode focusNode;
 
   @override
   void initState() {
     textEditingController = TextEditingController();
+    focusNode = FocusNode();
     super.initState();
   }
 
   @override
   void dispose() {
     textEditingController.dispose();
+    focusNode.dispose();
     super.dispose();
   }
+
+  List<ChatModel> chatList = [];
 
   @override
   Widget build(BuildContext context) {
@@ -63,13 +69,11 @@ class _ChatScreenState extends State<ChatScreen> {
           children: [
             Flexible(
               child: ListView.builder(
-                itemCount: 5,
+                itemCount: chatList.length,
                 itemBuilder: (context, index) {
                   return ChatWidget(
-                    msg: chatMessages[index]['msg'].toString(),
-                    chatIndex: int.parse(
-                      chatMessages[index]['chatIndex'].toString(),
-                    ),
+                    msg: chatList[index].message,
+                    chatIndex: chatList[index].chatIndex,
                   );
                 },
               ),
@@ -91,12 +95,15 @@ class _ChatScreenState extends State<ChatScreen> {
                   children: [
                     Expanded(
                       child: TextField(
+                        focusNode: focusNode,
                         style: const TextStyle(
                           color: Colors.white,
                         ),
                         controller: textEditingController,
-                        onSubmitted: (value) {
-                          textEditingController.clear();
+                        onSubmitted: (value) async {
+                          await sendMessage(
+                            modelsProvider: modelsProvider,
+                          );
                         },
                         decoration: const InputDecoration.collapsed(
                           hintText: 'How can I help you?',
@@ -109,20 +116,9 @@ class _ChatScreenState extends State<ChatScreen> {
                     ),
                     IconButton(
                       onPressed: () async {
-                        try {
-                          setState(() {
-                            _isWriting = true;
-                          });
-                          final list = await ApiService.sendMessage(
-                              message: textEditingController.text,
-                              modelId: modelsProvider.getCurrentModel);
-                        } catch (error) {
-                          log("error $error");
-                        } finally {
-                          setState(() {
-                            _isWriting = false;
-                          });
-                        }
+                        await sendMessage(
+                          modelsProvider: modelsProvider,
+                        );
                       },
                       icon: const Icon(
                         Icons.send,
@@ -137,5 +133,34 @@ class _ChatScreenState extends State<ChatScreen> {
         ),
       ),
     );
+  }
+
+  Future<void> sendMessage({required ModelsProvider modelsProvider}) async {
+    try {
+      setState(() {
+        _isWriting = true;
+        chatList.add(
+          ChatModel(
+            message: textEditingController.text,
+            chatIndex: 0,
+          ),
+        );
+        textEditingController.clear();
+        focusNode.unfocus();
+      });
+      chatList.addAll(
+        await ApiService.sendMessage(
+          message: textEditingController.text,
+          modelId: modelsProvider.getCurrentModel,
+        ),
+      );
+      setState(() {});
+    } catch (error) {
+      log("error $error");
+    } finally {
+      setState(() {
+        _isWriting = false;
+      });
+    }
   }
 }
