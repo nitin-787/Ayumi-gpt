@@ -1,4 +1,3 @@
-import 'package:chatgpt/constants/text_widget.dart';
 import 'package:flutter/material.dart';
 
 Color scaffoldBackgroundColor = Colors.grey;
