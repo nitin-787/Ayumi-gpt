@@ -41,6 +41,7 @@ class ApiService {
     required String modelId,
   }) async {
     try {
+      log(modelId);
       var response = await http.post(
         Uri.parse("$BASE_URL/completions"),
         headers: {

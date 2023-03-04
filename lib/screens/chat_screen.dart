@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:chatgpt/constants/constants.dart';
+import 'package:chatgpt/constants/text_widget.dart';
 import 'package:chatgpt/models/chat_model.dart';
 import 'package:chatgpt/providers/models_provider.dart';
 import 'package:chatgpt/services/api_service.dart';
@@ -157,6 +158,15 @@ class _ChatScreenState extends State<ChatScreen> {
     required ModelsProvider modelsProvider,
     required ChatProvider chatProvider,
   }) async {
+    if (textEditingController.text.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: TextWidget(label: "Please enter a message"),
+          backgroundColor: Colors.red,
+        ),
+      );
+      return;
+    }
     try {
       setState(() {
         _isWriting = true;
@@ -183,6 +193,12 @@ class _ChatScreenState extends State<ChatScreen> {
       setState(() {});
     } catch (error) {
       log("error $error");
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: TextWidget(label: error.toString()),
+          backgroundColor: Colors.red,
+        ),
+      );
     } finally {
       setState(() {
         scrollToBottom();
