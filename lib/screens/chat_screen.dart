@@ -21,7 +21,7 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
-  bool _isWriting = false;
+  bool _isTyping = false;
 
   late TextEditingController textEditingController;
   late ScrollController _listController;
@@ -87,7 +87,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 },
               ),
             ),
-            if (_isWriting) ...[
+            if (_isTyping) ...[
               const SpinKitThreeBounce(
                 color: Colors.blue,
                 size: 20,
@@ -158,6 +158,15 @@ class _ChatScreenState extends State<ChatScreen> {
     required ModelsProvider modelsProvider,
     required ChatProvider chatProvider,
   }) async {
+    if (_isTyping) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: TextWidget(label: "you can't send more than one message"),
+          backgroundColor: Colors.red,
+        ),
+      );
+      return;
+    }
     if (textEditingController.text.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
@@ -168,11 +177,12 @@ class _ChatScreenState extends State<ChatScreen> {
       return;
     }
     try {
+      String message = textEditingController.text;
       setState(() {
-        _isWriting = true;
-        chatProvider.addUserChat(message: textEditingController.text);
+        _isTyping = true;
+        chatProvider.addUserChat(message: message);
         textEditingController.clear();
-        focusNode.unfocus();
+        // focusNode.unfocus();
         // chatList.add(
         // ChatModel(
         //   message: textEditingController.text,
@@ -181,7 +191,7 @@ class _ChatScreenState extends State<ChatScreen> {
         // );
       });
       await chatProvider.sendMsg(
-        message: textEditingController.text,
+        message: message,
         modelId: modelsProvider.getCurrentModel,
       );
       // chatList.addAll(
@@ -202,7 +212,7 @@ class _ChatScreenState extends State<ChatScreen> {
     } finally {
       setState(() {
         scrollToBottom();
-        _isWriting = false;
+        _isTyping = false;
       });
     }
   }
