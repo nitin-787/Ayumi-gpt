@@ -3,10 +3,13 @@ import 'dart:developer';
 import 'package:chatgpt/constants/constants.dart';
 import 'package:chatgpt/constants/text_widget.dart';
 import 'package:chatgpt/providers/models_provider.dart';
+import 'package:chatgpt/services/assets_manger.dart';
 import 'package:chatgpt/services/services.dart';
 import 'package:chatgpt/widgets/chat_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:iconsax/iconsax.dart';
+import 'package:iconly/iconly.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/chat_provider.dart';
@@ -49,24 +52,86 @@ class _ChatScreenState extends State<ChatScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        elevation: 2,
-        title: const Text(
-          'AI chat assistant',
-          style: TextStyle(
+        backgroundColor: cardColor,
+        title: const Center(
+          child: TextWidget(
+            label: 'Ayumi',
             color: Colors.white,
           ),
         ),
         actions: [
           IconButton(
-            onPressed: () async {
-              await Services.showModelSheet(context: context);
-            },
-            icon: const Icon(
-              Icons.more_vert,
-              color: Colors.white,
-            ),
+            onPressed: () {},
+            icon: const Icon(Iconsax.moon),
           ),
         ],
+      ),
+      drawer: Drawer(
+        backgroundColor: drawerColor,
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(0, 70, 0, 0),
+          child: ListView(
+            children: [
+              ClipRRect(
+                child: Image.asset(
+                  Assetsmanager.ace,
+                  height: 100,
+                  width: 100,
+                ),
+              ),
+              ListTile(
+                leading: const Icon(Iconsax.info_circle),
+                iconColor: Colors.black,
+                onTap: () async {},
+                title: const TextWidget(
+                  label: "About App",
+                  color: Colors.black,
+                ),
+              ),
+              ListTile(
+                leading: const Icon(IconlyLight.star),
+                iconColor: Colors.black,
+                onTap: () async {},
+                title: const TextWidget(
+                  label: "Rate app",
+                  color: Colors.black,
+                ),
+              ),
+              ListTile(
+                leading: const Icon(IconlyLight.user),
+                // leading: const Icon(Iconsax.moon),
+                iconColor: Colors.black,
+                onTap: () async {},
+                title: const TextWidget(
+                  label: "Invite Friends",
+                  color: Colors.black,
+                ),
+              ),
+              ListTile(
+                leading: const Icon(Iconsax.danger),
+                iconColor: Colors.black,
+                onTap: () async {
+                  await Services.showModelSheet(context: context);
+                },
+                title: const TextWidget(
+                  label: "Report a problem",
+                  color: Colors.black,
+                ),
+              ),
+              ListTile(
+                leading: const Icon(Iconsax.moon),
+                iconColor: Colors.black,
+                onTap: () async {
+                  await Services.showModelSheet(context: context);
+                },
+                title: const TextWidget(
+                  label: "dark side",
+                  color: Colors.black,
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
       body: SafeArea(
         child: Column(
