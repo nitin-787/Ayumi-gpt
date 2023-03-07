@@ -4,7 +4,6 @@ import 'package:chatgpt/constants/constants.dart';
 import 'package:chatgpt/constants/text_widget.dart';
 import 'package:chatgpt/providers/models_provider.dart';
 import 'package:chatgpt/services/assets_manger.dart';
-import 'package:chatgpt/services/services.dart';
 import 'package:chatgpt/widgets/chat_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -99,7 +98,6 @@ class _ChatScreenState extends State<ChatScreen> {
               ),
               ListTile(
                 leading: const Icon(IconlyLight.user),
-                // leading: const Icon(Iconsax.moon),
                 iconColor: Colors.black,
                 onTap: () async {},
                 title: const TextWidget(
@@ -110,9 +108,7 @@ class _ChatScreenState extends State<ChatScreen> {
               ListTile(
                 leading: const Icon(Iconsax.danger),
                 iconColor: Colors.black,
-                onTap: () async {
-                  await Services.showModelSheet(context: context);
-                },
+                onTap: () async {},
                 title: const TextWidget(
                   label: "Report a problem",
                   color: Colors.black,
@@ -121,9 +117,7 @@ class _ChatScreenState extends State<ChatScreen> {
               ListTile(
                 leading: const Icon(Iconsax.moon),
                 iconColor: Colors.black,
-                onTap: () async {
-                  await Services.showModelSheet(context: context);
-                },
+                onTap: () async {},
                 title: const TextWidget(
                   label: "dark side",
                   color: Colors.black,
