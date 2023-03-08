@@ -2,14 +2,6 @@
 
 The ChatGPT Mobile App is a chatbot mobile application that enables users to have interactive conversations with chatbots powered by the OpenAI GPT (Generative Pre-trained Transformer) model. The app is designed to provide a personalized and conversational experience, bridging the gap between traditional chatbots and human conversations.
 
-## Table of Contents
-
-- Features
-- Installation
-- Usage
-- Tech Stack
-- Contributing
-- License
 
 ### Features
 
@@ -20,10 +12,14 @@ The ChatGPT Mobile App has the following features:
 - Scalability to handle high traffic volumes and a - large number of users
 - Integration with OpenAI GPT model
 - Ability to learn from user feedback
-  Installation
-  To install the ChatGPT Mobile App, follow these steps:
+
 
 ### Usage
+To use the ChatGPT Mobile App, simply download and install the app on your mobile device. Once installed, you can open the app and begin having personalized chatbot conversations with the OpenAI GPT model. The app provides an intuitive and user-friendly interface that makes it easy to interact with the chatbots. Additionally, the app is scalable, allowing it to handle high traffic volumes and a large number of users.
+
+During your conversations with the chatbots, you can provide feedback to help the model learn and improve its responses. To get started, simply type in your message and the chatbot will respond with a relevant and personalized response. The ChatGPT Mobile App is designed to provide a conversational experience that bridges the gap between traditional chatbots and human conversations.
+
+If you encounter any issues while using the app or have suggestions for improvements, you can contribute to the project by forking the repository and creating a pull request. The app is built using Flutter, Dart, and Android Studio, and is licensed under the MIT License.
 
 ### Tech Stack
 

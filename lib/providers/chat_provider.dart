@@ -21,12 +21,21 @@ class ChatProvider with ChangeNotifier {
     required String message,
     required String modelId,
   }) async {
-    chatList.addAll(
-      await ApiService.sendMessage(
-        message: message,
-        modelId: modelId,
-      ),
-    );
-    notifyListeners();
+    if (modelId.toLowerCase().startsWith('gpt')) {
+      chatList.addAll(
+        await ApiService.sendMessageGPT(
+          message: message,
+          modelId: modelId,
+        ),
+      );
+    } else {
+      chatList.addAll(
+        await ApiService.sendMessage(
+          message: message,
+          modelId: modelId,
+        ),
+      );
+      notifyListeners();
+    }
   }
 }
