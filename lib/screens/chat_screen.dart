@@ -4,6 +4,7 @@ import 'package:chatgpt/constants/constants.dart';
 import 'package:chatgpt/constants/text_widget.dart';
 import 'package:chatgpt/providers/models_provider.dart';
 import 'package:chatgpt/services/assets_manger.dart';
+import 'package:chatgpt/services/redirect.dart';
 import 'package:chatgpt/services/services.dart';
 import 'package:chatgpt/widgets/chat_widget.dart';
 import 'package:flutter/material.dart';
@@ -29,17 +30,6 @@ class _ChatScreenState extends State<ChatScreen> {
   late ScrollController _listController;
   late FocusNode focusNode;
 
-  Future<void> launchURL(Uri url) async {
-    if (await launchUrl(
-      url,
-      mode: LaunchMode.externalApplication,
-    )) {
-      log('url launched $url');
-    } else {
-      log('could not launch $url');
-    }
-  }
-
   @override
   void initState() {
     _listController = ScrollController();
@@ -59,16 +49,6 @@ class _ChatScreenState extends State<ChatScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final Uri issueUrl = Uri(
-      scheme: 'https',
-      host: 'github.com',
-      path: 'nitin-787/Ayumi-gpt/issues/new/choose/',
-    );
-    final Uri aboutUrl = Uri(
-      scheme: 'https',
-      host: 'nitin-787.github.io',
-      path: 'Ayumi-gpt/',
-    );
     final modelsProvider = Provider.of<ModelsProvider>(context);
     final chatProvider = Provider.of<ChatProvider>(context);
 
@@ -106,11 +86,7 @@ class _ChatScreenState extends State<ChatScreen> {
               ListTile(
                 leading: const Icon(Iconsax.info_circle),
                 iconColor: Colors.black,
-                onTap: () async {
-                  setState(() {
-                    launchURL(aboutUrl);
-                  });
-                },
+                onTap: () async {},
                 title: const TextWidget(
                   label: "About App",
                   color: Colors.black,
@@ -137,11 +113,7 @@ class _ChatScreenState extends State<ChatScreen> {
               ListTile(
                 leading: const Icon(Iconsax.danger),
                 iconColor: Colors.black,
-                onTap: () async {
-                  setState(() {
-                    launchURL(issueUrl);
-                  });
-                },
+                onTap: () async {},
                 title: const TextWidget(
                   label: "Report a problem",
                   color: Colors.black,
