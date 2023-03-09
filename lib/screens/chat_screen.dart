@@ -12,7 +12,6 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:iconly/iconly.dart';
 import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../providers/chat_provider.dart';
 
@@ -76,15 +75,44 @@ class _ChatScreenState extends State<ChatScreen> {
           padding: const EdgeInsets.fromLTRB(0, 70, 0, 0),
           child: ListView(
             children: [
-              ClipRRect(
-                child: Image.asset(
-                  Assetsmanager.ace,
-                  height: 100,
-                  width: 100,
+              Padding(
+                padding: const EdgeInsets.only(left: 4),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    ClipRRect(
+                      child: Image.asset(
+                        Assetsmanager.ace,
+                        height: 100,
+                        width: 100,
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: const [
+                        TextWidget(
+                          label: "Nex",
+                          color: Colors.black,
+                          fontSize: 20,
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        TextWidget(
+                          label: "Your daddy",
+                          color: Colors.black,
+                          fontSize: 16,
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               ),
               const SizedBox(
-                height: 40,
+                height: 20,
               ),
               ListTile(
                 leading: const Icon(Iconsax.user_edit),
@@ -113,7 +141,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 iconColor: Colors.black,
                 onTap: () async {},
                 title: const TextWidget(
-                  label: "Rate app",
+                  label: "Rate App",
                   color: Colors.black,
                 ),
               ),
