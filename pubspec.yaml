@@ -41,6 +41,7 @@ dependencies:
   animated_text_kit: ^4.2.2
   iconsax: ^0.0.8
   iconly: ^1.0.1
+  url_launcher: ^6.1.10
 
 dev_dependencies:
   flutter_test:
