@@ -83,10 +83,26 @@ class _ChatScreenState extends State<ChatScreen> {
                   width: 100,
                 ),
               ),
+              const SizedBox(
+                height: 40,
+              ),
               ListTile(
-                leading: const Icon(Iconsax.info_circle),
+                leading: const Icon(Iconsax.user_edit),
                 iconColor: Colors.black,
-                onTap: () async {},
+                onTap: () async {
+                  RedirectURL().developerUrl();
+                },
+                title: const TextWidget(
+                  label: "Developer",
+                  color: Colors.black,
+                ),
+              ),
+              ListTile(
+                leading: const Icon(IconlyLight.document),
+                iconColor: Colors.black,
+                onTap: () async {
+                  RedirectURL().aboutUrl();
+                },
                 title: const TextWidget(
                   label: "About App",
                   color: Colors.black,
@@ -113,7 +129,9 @@ class _ChatScreenState extends State<ChatScreen> {
               ListTile(
                 leading: const Icon(Iconsax.danger),
                 iconColor: Colors.black,
-                onTap: () async {},
+                onTap: () async {
+                  RedirectURL().issueUrl();
+                },
                 title: const TextWidget(
                   label: "Report a problem",
                   color: Colors.black,
