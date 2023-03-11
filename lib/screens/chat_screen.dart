@@ -76,7 +76,7 @@ class _ChatScreenState extends State<ChatScreen> {
           child: ListView(
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 4),
+                padding: const EdgeInsets.only(left: 3),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
