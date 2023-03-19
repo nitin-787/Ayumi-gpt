@@ -34,13 +34,14 @@ class _DropDownWidgetState extends State<DropDownWidget> {
             : FittedBox(
                 child: DropdownButton(
                   dropdownColor: scaffoldBackgroundColor,
-                  iconEnabledColor: Colors.white,
+                  iconEnabledColor: Colors.black,
                   items: List<DropdownMenuItem<String>>.generate(
                     snapshot.data!.length,
                     (index) => DropdownMenuItem(
                       value: snapshot.data![index].id,
                       child: TextWidget(
                         label: snapshot.data![index].id,
+                        color: Colors.black,
                         fontSize: 16,
                       ),
                     ),
