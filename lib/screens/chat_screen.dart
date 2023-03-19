@@ -1,6 +1,5 @@
 import 'dart:developer';
 
-import 'package:chatgpt/constants/constants.dart';
 import 'package:chatgpt/constants/text_widget.dart';
 import 'package:chatgpt/providers/models_provider.dart';
 import 'package:chatgpt/services/assets_manger.dart';
@@ -52,11 +51,13 @@ class _ChatScreenState extends State<ChatScreen> {
     final chatProvider = Provider.of<ChatProvider>(context);
 
     return Scaffold(
+      backgroundColor: const Color(0xffd7e6fd),
       appBar: AppBar(
-        backgroundColor: cardColor,
+        backgroundColor: const Color(0xff215cec),
         title: const Center(
           child: TextWidget(
             label: 'Ayumi',
+            fontSize: 24,
             color: Colors.white,
           ),
         ),
@@ -70,7 +71,7 @@ class _ChatScreenState extends State<ChatScreen> {
         ],
       ),
       drawer: Drawer(
-        backgroundColor: drawerColor,
+        backgroundColor: const Color(0xffd7e6fd),
         child: Padding(
           padding: const EdgeInsets.fromLTRB(0, 70, 0, 0),
           child: ListView(
@@ -96,7 +97,8 @@ class _ChatScreenState extends State<ChatScreen> {
                         TextWidget(
                           label: "Nex",
                           color: Colors.black,
-                          fontSize: 20,
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
                         ),
                         SizedBox(
                           height: 5,
@@ -104,6 +106,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         TextWidget(
                           label: "Your daddy",
                           color: Colors.black,
+                          fontWeight: FontWeight.w500,
                           fontSize: 16,
                         ),
                       ],
@@ -205,11 +208,14 @@ class _ChatScreenState extends State<ChatScreen> {
               height: 15,
             ),
             Material(
-              color: cardColor,
+              color: const Color(0xffFFFFFF),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
                   children: [
+                    const SizedBox(
+                      width: 20,
+                    ),
                     Expanded(
                       child: TextField(
                         focusNode: focusNode,
@@ -224,9 +230,12 @@ class _ChatScreenState extends State<ChatScreen> {
                           );
                         },
                         decoration: const InputDecoration.collapsed(
-                          hintText: 'How can I help you?',
+                          hintText: 'Ask me anything...',
                           hintStyle: TextStyle(
-                            color: Colors.white,
+                            fontFamily: 'Gilroy',
+                            fontWeight: FontWeight.w600,
+                            fontSize: 18,
+                            color: Color(0xff666666),
                           ),
                           border: InputBorder.none,
                         ),
@@ -241,7 +250,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       },
                       icon: const Icon(
                         Icons.send,
-                        color: Colors.white,
+                        color: Color(0xff215cec),
                       ),
                     ),
                   ],

@@ -21,6 +21,7 @@ class TextWidget extends StatelessWidget {
       style: TextStyle(
         color: color ?? Colors.white,
         fontSize: fontSize,
+        fontFamily: 'Gilroy',
         fontWeight: fontWeight ?? FontWeight.w500,
       ),
     );
