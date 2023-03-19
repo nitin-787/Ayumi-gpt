@@ -18,7 +18,7 @@ class ChatWidget extends StatelessWidget {
     return Column(
       children: [
         Material(
-          color: chatIndex == 0 ? scaffoldBackgroundColor : cardColor,
+          color: chatIndex == 0 ? cardColor : scaffoldBackgroundColor,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
@@ -36,14 +36,16 @@ class ChatWidget extends StatelessWidget {
                   child: chatIndex == 0
                       ? TextWidget(
                           label: msg,
+                          fontSize: 18,
+                          color: Colors.white,
                         )
                       : AnimatedTextKit(
                           animatedTexts: [
                             TypewriterAnimatedText(
                               msg,
                               textStyle: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
+                                color: Color(0xff666666),
+                                fontSize: 18,
                               ),
                               speed: const Duration(milliseconds: 50),
                             ),

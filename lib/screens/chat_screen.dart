@@ -125,6 +125,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 },
                 title: const TextWidget(
                   label: "Developer",
+                  fontWeight: FontWeight.w600,
                   color: Colors.black,
                 ),
               ),
@@ -136,6 +137,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 },
                 title: const TextWidget(
                   label: "About App",
+                  fontWeight: FontWeight.w600,
                   color: Colors.black,
                 ),
               ),
@@ -145,6 +147,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 onTap: () async {},
                 title: const TextWidget(
                   label: "Rate App",
+                  fontWeight: FontWeight.w600,
                   color: Colors.black,
                 ),
               ),
@@ -154,6 +157,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 onTap: () async {},
                 title: const TextWidget(
                   label: "Invite Friends",
+                  fontWeight: FontWeight.w600,
                   color: Colors.black,
                 ),
               ),
@@ -165,6 +169,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 },
                 title: const TextWidget(
                   label: "Report a problem",
+                  fontWeight: FontWeight.w600,
                   color: Colors.black,
                 ),
               ),
@@ -174,6 +179,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 onTap: () async {},
                 title: const TextWidget(
                   label: "dark side",
+                  fontWeight: FontWeight.w600,
                   color: Colors.black,
                 ),
               ),
@@ -220,7 +226,10 @@ class _ChatScreenState extends State<ChatScreen> {
                       child: TextField(
                         focusNode: focusNode,
                         style: const TextStyle(
-                          color: Colors.white,
+                          fontFamily: 'Gilroy',
+                          fontWeight: FontWeight.w600,
+                          fontSize: 18,
+                          color: Color(0xff666666),
                         ),
                         controller: textEditingController,
                         onSubmitted: (value) async {
