@@ -213,59 +213,99 @@ class _ChatScreenState extends State<ChatScreen> {
             const SizedBox(
               height: 15,
             ),
-            Material(
-              color: const Color(0xffFFFFFF),
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  children: [
-                    const SizedBox(
-                      width: 20,
-                    ),
-                    Expanded(
-                      child: TextField(
-                        focusNode: focusNode,
-                        style: const TextStyle(
-                          fontFamily: 'Gilroy',
-                          fontWeight: FontWeight.w600,
-                          fontSize: 18,
-                          color: Color(0xff666666),
-                        ),
-                        controller: textEditingController,
-                        onSubmitted: (value) async {
-                          await sendMessage(
-                            chatProvider: chatProvider,
-                            modelsProvider: modelsProvider,
-                          );
-                        },
-                        decoration: const InputDecoration.collapsed(
-                          hintText: 'Ask me anything...',
-                          hintStyle: TextStyle(
+            Container(
+              margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+              decoration: const BoxDecoration(
+                color: Color(0xffe7f0fe),
+                borderRadius: BorderRadius.all(Radius.circular(30)),
+                boxShadow: [
+                  BoxShadow(
+                    color: Color(0x29000000),
+                    offset: Offset(0, 4),
+                    blurRadius: 4,
+                  ),
+                ],
+              ),
+              padding: const EdgeInsets.fromLTRB(12, 0, 12, 0),
+              child: Material(
+                color: Colors.transparent,
+                child: Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: Row(
+                    children: [
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      Expanded(
+                        child: TextField(
+                          focusNode: focusNode,
+                          style: const TextStyle(
                             fontFamily: 'Gilroy',
                             fontWeight: FontWeight.w600,
                             fontSize: 18,
                             color: Color(0xff666666),
                           ),
-                          border: InputBorder.none,
+                          controller: textEditingController,
+                          onSubmitted: (value) async {
+                            await sendMessage(
+                              chatProvider: chatProvider,
+                              modelsProvider: modelsProvider,
+                            );
+                          },
+                          decoration: const InputDecoration.collapsed(
+                            hintText: 'Ask me anything...',
+                            hintStyle: TextStyle(
+                              fontFamily: 'Gilroy',
+                              fontWeight: FontWeight.w600,
+                              fontSize: 20,
+                              color: Color(0xff666666),
+                            ),
+                            border: InputBorder.none,
+                          ),
                         ),
                       ),
-                    ),
-                    IconButton(
-                      onPressed: () async {
-                        await sendMessage(
-                          modelsProvider: modelsProvider,
-                          chatProvider: chatProvider,
-                        );
-                      },
-                      icon: const Icon(
-                        Icons.send,
-                        color: Color(0xff215cec),
+                      IconButton(
+                        onPressed: () async {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: TextWidget(
+                                label:
+                                    "don't you dare to press this button, it's not working yet and I'm too lazy to implement it",
+                              ),
+                              backgroundColor: Colors.red,
+                            ),
+                          );
+                        },
+                        icon: const Icon(
+                          size: 30,
+                          Iconsax.microphone_25,
+                          color: Color(0xff215cec),
+                        ),
                       ),
-                    ),
-                  ],
+                      IconButton(
+                        onPressed: () async {
+                          await sendMessage(
+                            modelsProvider: modelsProvider,
+                            chatProvider: chatProvider,
+                          );
+                        },
+                        icon: const Icon(
+                          size: 35,
+                          Iconsax.send_15,
+                          color: Color(0xff215cec),
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
+            const SizedBox(
+              height: 20,
+            )
           ],
         ),
       ),

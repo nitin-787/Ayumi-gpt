@@ -22,6 +22,8 @@ class Services {
               Flexible(
                 child: TextWidget(
                   label: 'Choose Model',
+                  color: Colors.black,
+                  fontWeight: FontWeight.w600,
                   fontSize: 16,
                 ),
               ),
