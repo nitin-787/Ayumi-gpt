@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:avatar_glow/avatar_glow.dart';
 import 'package:chatgpt/constants/text_widget.dart';
 import 'package:chatgpt/providers/models_provider.dart';
 import 'package:chatgpt/services/assets_manger.dart';
@@ -11,6 +12,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:iconly/iconly.dart';
 import 'package:provider/provider.dart';
+import 'package:speech_to_text/speech_to_text.dart';
 
 import '../providers/chat_provider.dart';
 
@@ -27,6 +29,9 @@ class _ChatScreenState extends State<ChatScreen> {
   late TextEditingController textEditingController;
   late ScrollController _listController;
   late FocusNode focusNode;
+
+  var isListening = false;
+  SpeechToText speechToText = SpeechToText();
 
   @override
   void initState() {
@@ -264,22 +269,54 @@ class _ChatScreenState extends State<ChatScreen> {
                           ),
                         ),
                       ),
-                      IconButton(
-                        onPressed: () async {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: TextWidget(
-                                label:
-                                    "don't you dare to press this button, it's not working yet and I'm too lazy to implement it",
-                              ),
-                              backgroundColor: Colors.red,
-                            ),
-                          );
-                        },
-                        icon: const Icon(
-                          size: 30,
-                          Iconsax.microphone_25,
-                          color: Color(0xff215cec),
+                      AvatarGlow(
+                        endRadius: 25,
+                        animate: isListening,
+                        glowColor: Colors.blue,
+                        repeatPauseDuration: const Duration(milliseconds: 100),
+                        repeat: true,
+                        duration: const Duration(milliseconds: 2000),
+                        showTwoGlows: true,
+                        child: GestureDetector(
+                          onTapDown: (details) async {
+                            if (!isListening) {
+                              var available = await speechToText.initialize();
+                              if (available) {
+                                setState(() {
+                                  isListening = true;
+                                  speechToText.listen(
+                                    onResult: (result) {
+                                      setState(() {
+                                        textEditingController.text =
+                                            result.recognizedWords;
+                                        sendMessage(
+                                          chatProvider: chatProvider,
+                                          modelsProvider: modelsProvider,
+                                        );
+                                      });
+                                    },
+                                  );
+                                });
+                              }
+                            }
+                          },
+                          onTapUp: (details) async {
+                            setState(() {
+                              isListening = false;
+                            });
+                            await speechToText.stop();
+                            // await sendMessage(
+                            //   chatProvider: chatProvider,
+                            //   modelsProvider: modelsProvider,
+                            // );
+                          },
+                          child: Icon(
+                            isListening
+                                ? Iconsax.microphone_25
+                                : Iconsax.microphone,
+                            size: 30,
+                            color: const Color(0xff215cec),
+                          ),
                         ),
                       ),
                       IconButton(
@@ -290,7 +327,7 @@ class _ChatScreenState extends State<ChatScreen> {
                           );
                         },
                         icon: const Icon(
-                          size: 35,
+                          size: 30,
                           Iconsax.send_15,
                           color: Color(0xff215cec),
                         ),
