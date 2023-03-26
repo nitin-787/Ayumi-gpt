@@ -27,7 +27,7 @@ If you encounter any issues while using the app or have suggestions for improvem
 - [Dart](https://dart.dev/)
 - [Android Studio](https://developer.android.com/studio)
 
-> Checkout the UI map [HERE](https://www.figma.com/file/DWV6y3U2686IANogOgZlQj/Ayumi-gpt?node-id=0%3A1&t=agMdJnj4GmxhYpAL-1) <br/>
+> Checkout the UI map [HERE](https://www.figma.com/file/w6wckO5JoNvcr6QaYv65KD/aymui-gpt?node-id=0%3A1&t=633SvktPNtn0uAum-1) <br/>
 
 ## Contributing
 
