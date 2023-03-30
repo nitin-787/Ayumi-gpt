@@ -43,6 +43,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
   @override
   void dispose() {
+    _listController.dispose();
     textEditingController.dispose();
     focusNode.dispose();
     super.dispose();
@@ -385,7 +386,7 @@ class _ChatScreenState extends State<ChatScreen> {
         _isTyping = true;
         chatProvider.addUserChat(message: message);
         textEditingController.clear();
-        // focusNode.unfocus();
+        focusNode.unfocus();
         // chatList.add(
         // ChatModel(
         //   message: textEditingController.text,
@@ -396,6 +397,7 @@ class _ChatScreenState extends State<ChatScreen> {
       await chatProvider.sendMsg(
         message: message,
         modelId: modelsProvider.getCurrentModel,
+        memory: modelsProvider.hasMemory,
       );
       // chatList.addAll(
       //   await ApiService.sendMessage(
@@ -406,9 +408,17 @@ class _ChatScreenState extends State<ChatScreen> {
       setState(() {});
     } catch (error) {
       log("error $error");
+      var errorText = error.toString();
+      // disable memory if max token reached
+      if (errorText.toString().contains("max_length")) {
+        errorText = "Max token reached, Memory is disabled for this session";
+        modelsProvider.setMemoryEnabled(false);
+      }
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: TextWidget(label: error.toString()),
+          content: TextWidget(
+            label: errorText,
+          ),
           backgroundColor: Colors.red,
         ),
       );

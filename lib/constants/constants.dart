@@ -4,6 +4,11 @@ Color scaffoldBackgroundColor = const Color(0xfff3f6fd);
 Color? cardColor = const Color(0xff215cec);
 const Color drawerColor = Color(0xFFF6F8FE);
 
+enum ResponseType {
+  user,
+  assistant,
+}
+
 // List<String> models = [
 //   "MOdel-1",
 //   "Model-2",

@@ -5,6 +5,7 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:chatgpt/constants/api_consts.dart';
+import 'package:chatgpt/constants/constants.dart';
 import 'package:chatgpt/models/chat_model.dart';
 import 'package:chatgpt/models/models_model.dart';
 import 'package:http/http.dart' as http;
@@ -39,9 +40,28 @@ class ApiService {
   static Future<List<ChatModel>> sendMessageGPT({
     required String message,
     required String modelId,
+    required bool memory,
+    required List<ChatModel> chatsList,
   }) async {
     try {
-      log(modelId);
+      log("model, $modelId");
+      log("memory $memory");
+      final memChat = List<Map<String, String>>.empty(growable: true);
+      if (memory) {
+        // add all previous chats for model to process (consumes token)
+        memChat.addAll(chatsList.map((chat) => {
+              "role": chat.role,
+              "content": chat.message,
+            }));
+      } else {
+        // if no memory, send only the new message
+        memChat.add(
+          {
+            "role": ResponseType.user.name,
+            "content": message,
+          },
+        );
+      }
       var response = await http.post(
         Uri.parse("$BASE_URL/chat/completions"),
         headers: {
@@ -51,12 +71,7 @@ class ApiService {
         body: jsonEncode(
           {
             "model": modelId,
-            "messages": [
-              {
-                "role": "user",
-                "content": message,
-              }
-            ]
+            "messages": memChat,
           },
         ),
       );
@@ -64,7 +79,9 @@ class ApiService {
       Map jsonResponse = jsonDecode(response.body);
       if (jsonResponse['error'] != null) {
         // print("jsonResponse['error'] ${jsonResponse['error']['message']}");
-        throw HttpException(jsonResponse['error']['message']);
+        if (jsonResponse['error']['code'] == "Context_length_exceeded") {
+          throw const HttpException("Max length");
+        }
       }
 
       List<ChatModel> chatList = [];
@@ -76,6 +93,7 @@ class ApiService {
             return ChatModel(
               message: jsonResponse['choices'][index]['message']['content'],
               chatIndex: 1,
+              role: ResponseType.assistant.name,
             );
           },
         );
@@ -124,6 +142,7 @@ class ApiService {
             return ChatModel(
               message: jsonResponse['choices'][index]['text'],
               chatIndex: 1,
+              role: ResponseType.assistant.name,
             );
           },
         );

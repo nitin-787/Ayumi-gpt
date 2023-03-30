@@ -7,8 +7,15 @@ class ModelsProvider with ChangeNotifier {
 
   // default model
   String currentModel = "gpt-3.5-turbo-0301";
+  bool hasMemory = false;
+
   String get getCurrentModel {
     return currentModel;
+  }
+
+  void setMemoryEnabled(bool enabled) {
+    hasMemory = enabled;
+    notifyListeners();
   }
 
   void setCurrentModel(String newModel) {
