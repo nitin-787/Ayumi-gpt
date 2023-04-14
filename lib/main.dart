@@ -27,13 +27,26 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,
         home: const ChatScreen(),
-        theme: ThemeData(
-          scaffoldBackgroundColor: scaffoldBackgroundColor,
+        themeMode: ThemeMode.system,
+        darkTheme: ThemeData(
+          scaffoldBackgroundColor: scaffoldBackgroundDark,
+          // text color
+          canvasColor: darkText,
+          cardColor: drawerColorDark,
+          indicatorColor: iconDark,
           appBarTheme: AppBarTheme(
-            color: cardColor,
+            color: darkPrimary,
           ),
-          primarySwatch: Colors.blue,
-          // useMaterial3: true,
+        ),
+        theme: ThemeData(
+          // text color & icon color
+          canvasColor: lightText,
+          cardColor: drawerColorDark,
+          indicatorColor: iconLight,
+          scaffoldBackgroundColor: scaffoldBackgroundLight,
+          appBarTheme: AppBarTheme(
+            color: lightPrimary,
+          ),
         ),
       ),
     );

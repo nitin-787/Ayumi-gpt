@@ -12,7 +12,7 @@ class Services {
           top: Radius.circular(20),
         ),
       ),
-      backgroundColor: scaffoldBackgroundColor,
+      backgroundColor: scaffoldBackgroundLight,
       context: context,
       builder: (context) {
         return Padding(

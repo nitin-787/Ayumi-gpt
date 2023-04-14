@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
 
-Color scaffoldBackgroundColor = const Color(0xfff3f6fd);
-Color? cardColor = const Color(0xff215cec);
-const Color drawerColor = Color(0xFFF6F8FE);
+Color scaffoldBackgroundLight = const Color(0xfff3f6fd);
+Color scaffoldBackgroundDark = const Color(0xff191826);
+Color? lightPrimary = const Color(0xff215cec);
+Color? darkPrimary = const Color(0xff191826);
+Color? darkText = const Color(0xff50688c);
+Color? lightText = const Color.fromARGB(255, 255, 255, 255);
+
+Color? iconDark = const Color(0xff4a6fb5);
+Color? iconLight = const Color(0xff215cec);
+
+const Color drawerColorLight = Color(0xFFF6F8FE);
+const Color drawerColorDark = Color(0xFF1e1f2f);
 
 enum ResponseType {
   user,

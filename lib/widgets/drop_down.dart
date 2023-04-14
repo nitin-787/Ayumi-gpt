@@ -33,7 +33,7 @@ class _DropDownWidgetState extends State<DropDownWidget> {
             ? const SizedBox.shrink()
             : FittedBox(
                 child: DropdownButton(
-                  dropdownColor: scaffoldBackgroundColor,
+                  dropdownColor: scaffoldBackgroundLight,
                   iconEnabledColor: Colors.black,
                   items: List<DropdownMenuItem<String>>.generate(
                     snapshot.data!.length,

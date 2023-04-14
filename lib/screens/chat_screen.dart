@@ -57,14 +57,13 @@ class _ChatScreenState extends State<ChatScreen> {
     final chatProvider = Provider.of<ChatProvider>(context);
 
     return Scaffold(
-      backgroundColor: const Color(0xffd7e6fd),
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
-        backgroundColor: const Color(0xff215cec),
-        title: const Center(
+        title: Center(
           child: TextWidget(
             label: 'Ayumi',
             fontSize: 24,
-            color: Colors.white,
+            color: Theme.of(context).canvasColor,
           ),
         ),
         actions: [
@@ -73,11 +72,12 @@ class _ChatScreenState extends State<ChatScreen> {
               await Services.showModelSheet(context: context);
             },
             icon: const Icon(Iconsax.moon),
+            color: Theme.of(context).canvasColor,
           ),
         ],
       ),
       drawer: Drawer(
-        backgroundColor: const Color(0xffd7e6fd),
+        backgroundColor: Theme.of(context).cardColor,
         child: Padding(
           padding: const EdgeInsets.fromLTRB(0, 70, 0, 0),
           child: ListView(
@@ -99,19 +99,19 @@ class _ChatScreenState extends State<ChatScreen> {
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
+                      children: [
                         TextWidget(
                           label: "Nex",
-                          color: Colors.black,
+                          color: Theme.of(context).canvasColor,
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 5,
                         ),
                         TextWidget(
                           label: "Your daddy",
-                          color: Colors.black,
+                          color: Theme.of(context).canvasColor,
                           fontWeight: FontWeight.w500,
                           fontSize: 16,
                         ),
@@ -125,68 +125,68 @@ class _ChatScreenState extends State<ChatScreen> {
               ),
               ListTile(
                 leading: const Icon(Iconsax.user_edit),
-                iconColor: Colors.black,
+                iconColor: Theme.of(context).canvasColor,
                 onTap: () async {
                   RedirectURL().developerUrl();
                 },
-                title: const TextWidget(
+                title: TextWidget(
                   label: "Developer",
                   fontWeight: FontWeight.w600,
-                  color: Colors.black,
+                  color: Theme.of(context).canvasColor,
                 ),
               ),
               ListTile(
                 leading: const Icon(IconlyLight.document),
-                iconColor: Colors.black,
+                iconColor: Theme.of(context).canvasColor,
                 onTap: () async {
                   RedirectURL().aboutUrl();
                 },
-                title: const TextWidget(
+                title: TextWidget(
                   label: "About App",
                   fontWeight: FontWeight.w600,
-                  color: Colors.black,
+                  color: Theme.of(context).canvasColor,
                 ),
               ),
               ListTile(
                 leading: const Icon(IconlyLight.star),
-                iconColor: Colors.black,
+                iconColor: Theme.of(context).canvasColor,
                 onTap: () async {},
-                title: const TextWidget(
+                title: TextWidget(
                   label: "Rate App",
                   fontWeight: FontWeight.w600,
-                  color: Colors.black,
+                  color: Theme.of(context).canvasColor,
                 ),
               ),
               ListTile(
                 leading: const Icon(IconlyLight.user),
-                iconColor: Colors.black,
+                iconColor: Theme.of(context).canvasColor,
                 onTap: () async {},
-                title: const TextWidget(
+                title: TextWidget(
                   label: "Invite Friends",
                   fontWeight: FontWeight.w600,
-                  color: Colors.black,
+                  color: Theme.of(context).canvasColor,
                 ),
               ),
               ListTile(
                 leading: const Icon(Iconsax.danger),
-                iconColor: Colors.black,
+                iconColor: Theme.of(context).canvasColor,
                 onTap: () async {
                   RedirectURL().issueUrl();
                 },
-                title: const TextWidget(
+                title: TextWidget(
                   label: "Report a problem",
                   fontWeight: FontWeight.w600,
-                  color: Colors.black,
+                  color: Theme.of(context).canvasColor,
                 ),
               ),
               ListTile(
                 leading: const Icon(Iconsax.moon),
-                iconColor: Colors.black,
+                iconColor: Theme.of(context).canvasColor,
                 onTap: () async {},
-                title: const TextWidget(
+                title: TextWidget(
                   label: "dark side",
                   fontWeight: FontWeight.w600,
-                  color: Colors.black,
+                  color: Theme.of(context).canvasColor,
                 ),
               ),
             ],
@@ -196,6 +196,74 @@ class _ChatScreenState extends State<ChatScreen> {
       body: SafeArea(
         child: Column(
           children: [
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                    height: 100,
+                    width: 220,
+                    decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.all(Radius.circular(15)),
+                      border: Border.all(
+                        width: 1.0,
+                        color: const Color(0xff666666),
+                      ),
+                      color: Colors.transparent,
+                    ),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        TextWidget(
+                          label:
+                              "How do I make an HTTP\nrequest in Javascript?",
+                          color: Theme.of(context).canvasColor,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 15,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                    height: 100,
+                    width: 220,
+                    decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.all(Radius.circular(15)),
+                      border: Border.all(
+                        width: 1.0,
+                        color: const Color(0xff666666),
+                      ),
+                      color: Colors.transparent,
+                    ),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        TextWidget(
+                          label: "Write peotry for a\ngirl named shivani",
+                          color: Theme.of(context).canvasColor,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
             Flexible(
               child: ListView.builder(
                 controller: _listController,
@@ -211,8 +279,8 @@ class _ChatScreenState extends State<ChatScreen> {
               ),
             ),
             if (_isTyping) ...[
-              const SpinKitThreeBounce(
-                color: Colors.blue,
+              SpinKitThreeBounce(
+                color: Theme.of(context).appBarTheme.backgroundColor,
                 size: 20,
               ),
             ],
@@ -258,13 +326,13 @@ class _ChatScreenState extends State<ChatScreen> {
                               modelsProvider: modelsProvider,
                             );
                           },
-                          decoration: const InputDecoration.collapsed(
+                          decoration: InputDecoration.collapsed(
                             hintText: 'Ask me anything...',
                             hintStyle: TextStyle(
                               fontFamily: 'Gilroy',
                               fontWeight: FontWeight.w600,
                               fontSize: 20,
-                              color: Color(0xff666666),
+                              color: Theme.of(context).canvasColor,
                             ),
                             border: InputBorder.none,
                           ),
@@ -316,7 +384,7 @@ class _ChatScreenState extends State<ChatScreen> {
                                 ? Iconsax.microphone_25
                                 : Iconsax.microphone,
                             size: 30,
-                            color: const Color(0xff215cec),
+                            color: Theme.of(context).indicatorColor,
                           ),
                         ),
                       ),
@@ -327,10 +395,10 @@ class _ChatScreenState extends State<ChatScreen> {
                             chatProvider: chatProvider,
                           );
                         },
-                        icon: const Icon(
+                        icon: Icon(
                           size: 30,
                           Iconsax.send_15,
-                          color: Color(0xff215cec),
+                          color: Theme.of(context).indicatorColor,
                         ),
                       ),
                       const SizedBox(
