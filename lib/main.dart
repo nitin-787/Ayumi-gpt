@@ -1,6 +1,7 @@
 import 'package:chatgpt/constants/constants.dart';
 import 'package:chatgpt/providers/chat_provider.dart';
 import 'package:chatgpt/providers/models_provider.dart';
+import 'package:chatgpt/providers/theme_provider.dart';
 import 'package:chatgpt/screens/chat_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -28,26 +29,8 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         home: const ChatScreen(),
         themeMode: ThemeMode.system,
-        darkTheme: ThemeData(
-          scaffoldBackgroundColor: scaffoldBackgroundDark,
-          // text color
-          canvasColor: darkText,
-          cardColor: drawerColorDark,
-          indicatorColor: iconDark,
-          appBarTheme: AppBarTheme(
-            color: darkPrimary,
-          ),
-        ),
-        theme: ThemeData(
-          // text color & icon color
-          canvasColor: lightText,
-          cardColor: drawerColorDark,
-          indicatorColor: iconLight,
-          scaffoldBackgroundColor: scaffoldBackgroundLight,
-          appBarTheme: AppBarTheme(
-            color: lightPrimary,
-          ),
-        ),
+        darkTheme: MyTheme().darkTheme,
+        theme: MyTheme().lightTheme,
       ),
     );
   }

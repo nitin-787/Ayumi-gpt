@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:chatgpt/constants/text_widget.dart';
 import 'package:chatgpt/providers/models_provider.dart';
+import 'package:chatgpt/providers/theme_provider.dart';
 import 'package:chatgpt/services/assets_manger.dart';
 import 'package:chatgpt/services/redirect.dart';
 import 'package:chatgpt/services/services.dart';
@@ -48,7 +49,6 @@ class _ChatScreenState extends State<ChatScreen> {
     focusNode.dispose();
     super.dispose();
   }
-
   // List<ChatModel> chatList = [];
 
   @override
@@ -59,11 +59,10 @@ class _ChatScreenState extends State<ChatScreen> {
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
-        title: Center(
+        title: const Center(
           child: TextWidget(
             label: 'Ayumi',
             fontSize: 24,
-            color: Theme.of(context).canvasColor,
           ),
         ),
         actions: [
@@ -72,7 +71,6 @@ class _ChatScreenState extends State<ChatScreen> {
               await Services.showModelSheet(context: context);
             },
             icon: const Icon(Iconsax.moon),
-            color: Theme.of(context).canvasColor,
           ),
         ],
       ),
@@ -289,16 +287,18 @@ class _ChatScreenState extends State<ChatScreen> {
             ),
             Container(
               margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-              decoration: const BoxDecoration(
-                color: Color(0xffe7f0fe),
-                borderRadius: BorderRadius.all(Radius.circular(30)),
-                boxShadow: [
-                  BoxShadow(
-                    color: Color(0x29000000),
-                    offset: Offset(0, 4),
-                    blurRadius: 4,
-                  ),
-                ],
+              decoration: BoxDecoration(
+                color: Theme.of(context).focusColor,
+                borderRadius: const BorderRadius.all(Radius.circular(30)),
+                boxShadow: Theme.of(context).brightness == Brightness.light
+                    ? [
+                        const BoxShadow(
+                          color: Color.fromARGB(255, 21, 78, 163),
+                          offset: Offset(0, 3),
+                          blurRadius: 4,
+                        ),
+                      ]
+                    : [],
               ),
               padding: const EdgeInsets.fromLTRB(12, 0, 12, 0),
               child: Material(

@@ -5,7 +5,9 @@ Color scaffoldBackgroundDark = const Color(0xff191826);
 Color? lightPrimary = const Color(0xff215cec);
 Color? darkPrimary = const Color(0xff191826);
 Color? darkText = const Color(0xff50688c);
-Color? lightText = const Color.fromARGB(255, 255, 255, 255);
+Color? lightText = const Color(0xff666666);
+Color? containerColorDark = const Color(0xff191826);
+Color? containerColorLight = const Color(0xffffffff);
 
 Color? iconDark = const Color(0xff4a6fb5);
 Color? iconLight = const Color(0xff215cec);
