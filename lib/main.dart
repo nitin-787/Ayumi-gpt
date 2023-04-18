@@ -1,4 +1,3 @@
-import 'package:chatgpt/constants/constants.dart';
 import 'package:chatgpt/providers/chat_provider.dart';
 import 'package:chatgpt/providers/models_provider.dart';
 import 'package:chatgpt/providers/theme_provider.dart';

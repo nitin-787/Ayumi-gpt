@@ -3,7 +3,6 @@ import 'dart:developer';
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:chatgpt/constants/text_widget.dart';
 import 'package:chatgpt/providers/models_provider.dart';
-import 'package:chatgpt/providers/theme_provider.dart';
 import 'package:chatgpt/services/assets_manger.dart';
 import 'package:chatgpt/services/redirect.dart';
 import 'package:chatgpt/services/services.dart';
@@ -55,6 +54,9 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget build(BuildContext context) {
     final modelsProvider = Provider.of<ModelsProvider>(context);
     final chatProvider = Provider.of<ChatProvider>(context);
+
+    final brightness = MediaQuery.of(context).platformBrightness;
+    bool isDarkMode = brightness == Brightness.dark;
 
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -290,7 +292,8 @@ class _ChatScreenState extends State<ChatScreen> {
               decoration: BoxDecoration(
                 color: Theme.of(context).focusColor,
                 borderRadius: const BorderRadius.all(Radius.circular(30)),
-                boxShadow: Theme.of(context).brightness == Brightness.light
+                // theme detection bug
+                boxShadow: isDarkMode
                     ? [
                         const BoxShadow(
                           color: Color.fromARGB(255, 21, 78, 163),
@@ -298,7 +301,13 @@ class _ChatScreenState extends State<ChatScreen> {
                           blurRadius: 4,
                         ),
                       ]
-                    : [],
+                    : [
+                        const BoxShadow(
+                          color: Color.fromARGB(255, 171, 188, 214),
+                          offset: Offset(0, 1),
+                          blurRadius: 4,
+                        ),
+                      ],
               ),
               padding: const EdgeInsets.fromLTRB(12, 0, 12, 0),
               child: Material(
