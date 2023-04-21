@@ -26,7 +26,7 @@ class MyTheme {
     canvasColor: lightText,
     // text container color
     focusColor: containerColorLight,
-    cardColor: drawerColorDark,
+    cardColor: scaffoldBackgroundLight,
     indicatorColor: iconLight,
     scaffoldBackgroundColor: scaffoldBackgroundLight,
     appBarTheme: AppBarTheme(

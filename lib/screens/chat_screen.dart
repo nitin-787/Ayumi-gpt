@@ -120,6 +120,10 @@ class _ChatScreenState extends State<ChatScreen> {
                   ],
                 ),
               ),
+              Divider(
+                color: Theme.of(context).canvasColor,
+                thickness: 1,
+              ),
               const SizedBox(
                 height: 20,
               ),
@@ -197,13 +201,14 @@ class _ChatScreenState extends State<ChatScreen> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.only(
+                  left: 16, right: 16, top: 125, bottom: 16),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
-                    height: 100,
-                    width: 220,
+                    height: 90,
+                    width: 180,
                     decoration: BoxDecoration(
                       borderRadius: const BorderRadius.all(Radius.circular(15)),
                       border: Border.all(
@@ -220,7 +225,35 @@ class _ChatScreenState extends State<ChatScreen> {
                           label:
                               "How do I make an HTTP\nrequest in Javascript?",
                           color: Theme.of(context).canvasColor,
-                          fontSize: 16,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 15,
+                  ),
+                  Container(
+                    height: 90,
+                    width: 180,
+                    decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.all(Radius.circular(15)),
+                      border: Border.all(
+                        width: 1.0,
+                        color: const Color(0xff666666),
+                      ),
+                      color: Colors.transparent,
+                    ),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        TextWidget(
+                          label:
+                              "How do I make an HTTP\nrequest in Javascript?",
+                          color: Theme.of(context).canvasColor,
+                          fontSize: 15,
                           fontWeight: FontWeight.w600,
                         ),
                       ],
@@ -230,7 +263,7 @@ class _ChatScreenState extends State<ChatScreen> {
               ),
             ),
             const SizedBox(
-              height: 15,
+              height: 30,
             ),
             Padding(
               padding: const EdgeInsets.all(16.0),
@@ -238,8 +271,8 @@ class _ChatScreenState extends State<ChatScreen> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
-                    height: 100,
-                    width: 220,
+                    height: 90,
+                    width: 180,
                     decoration: BoxDecoration(
                       borderRadius: const BorderRadius.all(Radius.circular(15)),
                       border: Border.all(
@@ -255,7 +288,98 @@ class _ChatScreenState extends State<ChatScreen> {
                         TextWidget(
                           label: "Write peotry for a\ngirl named shivani",
                           color: Theme.of(context).canvasColor,
-                          fontSize: 18,
+                          fontSize: 17,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 15,
+                  ),
+                  Container(
+                    height: 90,
+                    width: 180,
+                    decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.all(Radius.circular(15)),
+                      border: Border.all(
+                        width: 1.0,
+                        color: const Color(0xff666666),
+                      ),
+                      color: Colors.transparent,
+                    ),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        TextWidget(
+                          label: "Write peotry for a\ngirl named shivani",
+                          color: Theme.of(context).canvasColor,
+                          fontSize: 17,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                    height: 90,
+                    width: 180,
+                    decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.all(Radius.circular(15)),
+                      border: Border.all(
+                        width: 1.0,
+                        color: const Color(0xff666666),
+                      ),
+                      color: Colors.transparent,
+                    ),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        TextWidget(
+                          label:
+                              "How do I make an HTTP\nrequest in Javascript?",
+                          color: Theme.of(context).canvasColor,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 15,
+                  ),
+                  Container(
+                    height: 90,
+                    width: 180,
+                    decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.all(Radius.circular(15)),
+                      border: Border.all(
+                        width: 1.0,
+                        color: const Color(0xff666666),
+                      ),
+                      color: Colors.transparent,
+                    ),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        TextWidget(
+                          label:
+                              "How do I make an HTTP\nrequest in Javascript?",
+                          color: Theme.of(context).canvasColor,
+                          fontSize: 15,
                           fontWeight: FontWeight.w600,
                         ),
                       ],
