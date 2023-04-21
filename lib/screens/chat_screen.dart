@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:avatar_glow/avatar_glow.dart';
+import 'package:chatgpt/config/size_config.dart';
 import 'package:chatgpt/constants/text_widget.dart';
 import 'package:chatgpt/providers/models_provider.dart';
 import 'package:chatgpt/services/assets_manger.dart';
@@ -57,7 +58,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
     final brightness = MediaQuery.of(context).platformBrightness;
     bool isDarkMode = brightness == Brightness.dark;
-
+    SizeConfig().init(context);
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
