@@ -208,8 +208,8 @@ class _ChatScreenState extends State<ChatScreen> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
-                    height: 90,
-                    width: 180,
+                    height: screenHeight(70),
+                    width: screenWidth(118),
                     decoration: BoxDecoration(
                       borderRadius: const BorderRadius.all(Radius.circular(15)),
                       border: Border.all(
@@ -226,7 +226,7 @@ class _ChatScreenState extends State<ChatScreen> {
                           label:
                               "How do I make an HTTP\nrequest in Javascript?",
                           color: Theme.of(context).canvasColor,
-                          fontSize: 15,
+                          fontSize: screenHeight(10),
                           fontWeight: FontWeight.w600,
                         ),
                       ],
@@ -236,8 +236,8 @@ class _ChatScreenState extends State<ChatScreen> {
                     width: 15,
                   ),
                   Container(
-                    height: 90,
-                    width: 180,
+                    height: screenHeight(70),
+                    width: screenWidth(118),
                     decoration: BoxDecoration(
                       borderRadius: const BorderRadius.all(Radius.circular(15)),
                       border: Border.all(
@@ -254,7 +254,7 @@ class _ChatScreenState extends State<ChatScreen> {
                           label:
                               "How do I make an HTTP\nrequest in Javascript?",
                           color: Theme.of(context).canvasColor,
-                          fontSize: 15,
+                          fontSize: screenHeight(10),
                           fontWeight: FontWeight.w600,
                         ),
                       ],
@@ -272,8 +272,8 @@ class _ChatScreenState extends State<ChatScreen> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
-                    height: 90,
-                    width: 180,
+                    height: screenHeight(70),
+                    width: screenWidth(118),
                     decoration: BoxDecoration(
                       borderRadius: const BorderRadius.all(Radius.circular(15)),
                       border: Border.all(
@@ -289,7 +289,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         TextWidget(
                           label: "Write peotry for a\ngirl named shivani",
                           color: Theme.of(context).canvasColor,
-                          fontSize: 17,
+                          fontSize: screenHeight(11),
                           fontWeight: FontWeight.w600,
                         ),
                       ],
@@ -299,8 +299,8 @@ class _ChatScreenState extends State<ChatScreen> {
                     width: 15,
                   ),
                   Container(
-                    height: 90,
-                    width: 180,
+                    height: screenHeight(70),
+                    width: screenWidth(118),
                     decoration: BoxDecoration(
                       borderRadius: const BorderRadius.all(Radius.circular(15)),
                       border: Border.all(
@@ -316,7 +316,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         TextWidget(
                           label: "Write peotry for a\ngirl named shivani",
                           color: Theme.of(context).canvasColor,
-                          fontSize: 17,
+                          fontSize: screenHeight(11),
                           fontWeight: FontWeight.w600,
                         ),
                       ],
@@ -334,8 +334,8 @@ class _ChatScreenState extends State<ChatScreen> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
-                    height: 90,
-                    width: 180,
+                    height: screenHeight(70),
+                    width: screenWidth(118),
                     decoration: BoxDecoration(
                       borderRadius: const BorderRadius.all(Radius.circular(15)),
                       border: Border.all(
@@ -352,7 +352,7 @@ class _ChatScreenState extends State<ChatScreen> {
                           label:
                               "How do I make an HTTP\nrequest in Javascript?",
                           color: Theme.of(context).canvasColor,
-                          fontSize: 15,
+                          fontSize: screenHeight(10),
                           fontWeight: FontWeight.w600,
                         ),
                       ],
@@ -362,8 +362,8 @@ class _ChatScreenState extends State<ChatScreen> {
                     width: 15,
                   ),
                   Container(
-                    height: 90,
-                    width: 180,
+                    height: screenHeight(70),
+                    width: screenWidth(119),
                     decoration: BoxDecoration(
                       borderRadius: const BorderRadius.all(Radius.circular(15)),
                       border: Border.all(
