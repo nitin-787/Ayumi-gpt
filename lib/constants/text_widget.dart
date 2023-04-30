@@ -1,3 +1,4 @@
+import 'package:chatgpt/config/size_config.dart';
 import 'package:flutter/material.dart';
 
 class TextWidget extends StatelessWidget {

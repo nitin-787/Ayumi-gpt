@@ -5,6 +5,7 @@ import 'package:chatgpt/config/size_config.dart';
 import 'package:chatgpt/constants/suggestions.dart';
 import 'package:chatgpt/constants/text_widget.dart';
 import 'package:chatgpt/providers/models_provider.dart';
+import 'package:chatgpt/providers/theme_provider.dart';
 import 'package:chatgpt/services/assets_manger.dart';
 import 'package:chatgpt/services/redirect.dart';
 import 'package:chatgpt/services/services.dart';
@@ -74,11 +75,12 @@ class _ChatScreenState extends State<ChatScreen> {
             onPressed: () async {
               await Services.showModelSheet(context: context);
             },
-            icon: const Icon(Iconsax.moon),
+            icon: const Icon(Iconsax.setting_2),
           ),
         ],
       ),
       drawer: Drawer(
+        width: screenWidth(200),
         backgroundColor: Theme.of(context).cardColor,
         child: Padding(
           padding: const EdgeInsets.fromLTRB(0, 70, 0, 0),
@@ -105,17 +107,17 @@ class _ChatScreenState extends State<ChatScreen> {
                         TextWidget(
                           label: "Nex",
                           color: Theme.of(context).canvasColor,
-                          fontSize: 24,
+                          fontSize: screenHeight((17)),
                           fontWeight: FontWeight.bold,
                         ),
                         const SizedBox(
                           height: 5,
                         ),
                         TextWidget(
-                          label: "Your daddy",
+                          label: "Nitin Sharma",
                           color: Theme.of(context).canvasColor,
                           fontWeight: FontWeight.w500,
-                          fontSize: 16,
+                          fontSize: screenHeight(11),
                         ),
                       ],
                     ),
@@ -126,8 +128,8 @@ class _ChatScreenState extends State<ChatScreen> {
                 color: Theme.of(context).canvasColor,
                 thickness: 1,
               ),
-              const SizedBox(
-                height: 20,
+              SizedBox(
+                height: screenHeight(14),
               ),
               ListTile(
                 leading: const Icon(Iconsax.user_edit),
@@ -138,6 +140,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 title: TextWidget(
                   label: "Developer",
                   fontWeight: FontWeight.w600,
+                  fontSize: screenHeight(12.5),
                   color: Theme.of(context).canvasColor,
                 ),
               ),
@@ -150,6 +153,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 title: TextWidget(
                   label: "About App",
                   fontWeight: FontWeight.w600,
+                  fontSize: screenHeight(12.5),
                   color: Theme.of(context).canvasColor,
                 ),
               ),
@@ -160,6 +164,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 title: TextWidget(
                   label: "Rate App",
                   fontWeight: FontWeight.w600,
+                  fontSize: screenHeight(12.5),
                   color: Theme.of(context).canvasColor,
                 ),
               ),
@@ -170,6 +175,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 title: TextWidget(
                   label: "Invite Friends",
                   fontWeight: FontWeight.w600,
+                  fontSize: screenHeight(12.5),
                   color: Theme.of(context).canvasColor,
                 ),
               ),
@@ -182,6 +188,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 title: TextWidget(
                   label: "Report a problem",
                   fontWeight: FontWeight.w600,
+                  fontSize: screenHeight(12.5),
                   color: Theme.of(context).canvasColor,
                 ),
               ),
@@ -192,6 +199,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 title: TextWidget(
                   label: "dark side",
                   fontWeight: FontWeight.w600,
+                  fontSize: screenHeight(12.5),
                   color: Theme.of(context).canvasColor,
                 ),
               ),
@@ -202,21 +210,25 @@ class _ChatScreenState extends State<ChatScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            // suggestion for chat
-            const Suggestions(),
-            Flexible(
-              child: ListView.builder(
-                controller: _listController,
-                itemCount: chatProvider.getChatList.length, // chatList.length,
-                itemBuilder: (context, index) {
-                  return ChatWidget(
-                    msg: chatProvider
-                        .getChatList[index].message, // chatList[index].message,
-                    chatIndex: chatProvider.getChatList[index]
-                        .chatIndex, // chatList[index].chatIndex,
+            Builder(
+              builder: (context) {
+                if (chatProvider.getChatList.isEmpty) {
+                  return const Suggestions();
+                } else {
+                  return Flexible(
+                    child: ListView.builder(
+                      controller: _listController,
+                      itemCount: chatProvider.getChatList.length,
+                      itemBuilder: (context, index) {
+                        return ChatWidget(
+                          msg: chatProvider.getChatList[index].message,
+                          chatIndex: chatProvider.getChatList[index].chatIndex,
+                        );
+                      },
+                    ),
                   );
-                },
-              ),
+                }
+              },
             ),
             if (_isTyping) ...[
               SpinKitThreeBounce(
@@ -228,7 +240,7 @@ class _ChatScreenState extends State<ChatScreen> {
               height: 15,
             ),
             Container(
-              margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+              margin: const EdgeInsets.fromLTRB(10, 80, 10, 0),
               decoration: BoxDecoration(
                 color: Theme.of(context).focusColor,
                 borderRadius: const BorderRadius.all(Radius.circular(30)),
@@ -280,7 +292,7 @@ class _ChatScreenState extends State<ChatScreen> {
                             hintStyle: TextStyle(
                               fontFamily: 'Gilroy',
                               fontWeight: FontWeight.w600,
-                              fontSize: 20,
+                              fontSize: screenHeight(12.7),
                               color: Theme.of(context).canvasColor,
                             ),
                             border: InputBorder.none,

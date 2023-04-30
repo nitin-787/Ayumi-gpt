@@ -184,7 +184,7 @@ class Suggestions extends StatelessWidget {
                     TextWidget(
                       label: "How do I make an HTTP\nrequest in Javascript?",
                       color: Theme.of(context).canvasColor,
-                      fontSize: 15,
+                      fontSize: screenHeight(10),
                       fontWeight: FontWeight.w600,
                     ),
                   ],

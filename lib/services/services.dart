@@ -1,3 +1,4 @@
+import 'package:chatgpt/config/size_config.dart';
 import 'package:chatgpt/constants/constants.dart';
 import 'package:chatgpt/constants/text_widget.dart';
 import 'package:chatgpt/widgets/drop_down.dart';
@@ -16,21 +17,21 @@ class Services {
       context: context,
       builder: (context) {
         return Padding(
-          padding: const EdgeInsets.all(18.0),
+          padding: const EdgeInsets.all(18),
           child: Column(
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
+                children: [
                   Flexible(
                     child: TextWidget(
                       label: 'Choose Model',
                       color: Colors.black,
                       fontWeight: FontWeight.w600,
-                      fontSize: 16,
+                      fontSize: screenHeight(12),
                     ),
                   ),
-                  Flexible(
+                  const Flexible(
                     flex: 2,
                     child: DropDownWidget(),
                   )
@@ -38,17 +39,17 @@ class Services {
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
+                children: [
                   Flexible(
                     flex: 3,
                     child: TextWidget(
                       label: "Memory (consumes lots of tokens):",
                       color: Colors.black,
                       fontWeight: FontWeight.w600,
-                      fontSize: 16,
+                      fontSize: screenHeight(12),
                     ),
                   ),
-                  Flexible(flex: 1, child: MemorySwitch()),
+                  const Flexible(flex: 1, child: MemorySwitch()),
                 ],
               ),
             ],

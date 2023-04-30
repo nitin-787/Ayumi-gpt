@@ -1,3 +1,4 @@
+import 'package:chatgpt/config/size_config.dart';
 import 'package:chatgpt/constants/constants.dart';
 import 'package:chatgpt/constants/text_widget.dart';
 import 'package:chatgpt/models/models_model.dart';
@@ -42,7 +43,7 @@ class _DropDownWidgetState extends State<DropDownWidget> {
                       child: TextWidget(
                         label: snapshot.data![index].id,
                         color: Colors.black,
-                        fontSize: 16,
+                        fontSize: screenHeight(10),
                       ),
                     ),
                   ),
