@@ -2,10 +2,8 @@ import 'dart:developer';
 
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:chatgpt/config/size_config.dart';
-import 'package:chatgpt/constants/suggestions.dart';
 import 'package:chatgpt/constants/text_widget.dart';
 import 'package:chatgpt/providers/models_provider.dart';
-import 'package:chatgpt/providers/theme_provider.dart';
 import 'package:chatgpt/services/assets_manger.dart';
 import 'package:chatgpt/services/redirect.dart';
 import 'package:chatgpt/services/services.dart';
@@ -210,26 +208,38 @@ class _ChatScreenState extends State<ChatScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            Builder(
-              builder: (context) {
-                if (chatProvider.getChatList.isEmpty) {
-                  return const Suggestions();
-                } else {
-                  return Flexible(
-                    child: ListView.builder(
-                      controller: _listController,
-                      itemCount: chatProvider.getChatList.length,
-                      itemBuilder: (context, index) {
-                        return ChatWidget(
-                          msg: chatProvider.getChatList[index].message,
-                          chatIndex: chatProvider.getChatList[index].chatIndex,
-                        );
-                      },
-                    ),
+            Flexible(
+              child: ListView.builder(
+                controller: _listController,
+                itemCount: chatProvider.getChatList.length,
+                itemBuilder: (context, index) {
+                  return ChatWidget(
+                    msg: chatProvider.getChatList[index].message,
+                    chatIndex: chatProvider.getChatList[index].chatIndex,
                   );
-                }
-              },
+                },
+              ),
             ),
+            // Builder(
+            //   builder: (context) {
+            //     if (chatProvider.getChatList.isEmpty) {
+            //       return const Suggestions();
+            //     } else {
+            //       return Flexible(
+            //         child: ListView.builder(
+            //           controller: _listController,
+            //           itemCount: chatProvider.getChatList.length,
+            //           itemBuilder: (context, index) {
+            //             return ChatWidget(
+            //               msg: chatProvider.getChatList[index].message,
+            //               chatIndex: chatProvider.getChatList[index].chatIndex,
+            //             );
+            //           },
+            //         ),
+            //       );
+            //     }
+            //   },
+            // ),
             if (_isTyping) ...[
               SpinKitThreeBounce(
                 color: Theme.of(context).appBarTheme.backgroundColor,
@@ -249,8 +259,8 @@ class _ChatScreenState extends State<ChatScreen> {
                     ? [
                         const BoxShadow(
                           color: Color.fromARGB(255, 21, 78, 163),
-                          offset: Offset(0, 3),
-                          blurRadius: 4,
+                          offset: Offset(0, 4),
+                          blurRadius: 10,
                         ),
                       ]
                     : [

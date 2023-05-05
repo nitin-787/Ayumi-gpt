@@ -31,7 +31,7 @@ class Suggestions extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     TextWidget(
-                      label: "How do I make an HTTP\nrequest in Javascript?",
+                      label: "Explain quantum\ncomputing in simple\n terms",
                       color: Theme.of(context).canvasColor,
                       fontSize: screenHeight(10),
                       fontWeight: FontWeight.w600,
@@ -58,7 +58,7 @@ class Suggestions extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     TextWidget(
-                      label: "How do I make an HTTP\nrequest in Javascript?",
+                      label: "Write a poetry for a\ngirl named Shivani",
                       color: Theme.of(context).canvasColor,
                       fontSize: screenHeight(10),
                       fontWeight: FontWeight.w600,
@@ -93,7 +93,8 @@ class Suggestions extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     TextWidget(
-                      label: "Write peotry for a\ngirl named shivani",
+                      label:
+                          "Who is the master\nof Naruto and his\nfather in anime?",
                       color: Theme.of(context).canvasColor,
                       fontSize: screenHeight(11),
                       fontWeight: FontWeight.w600,
@@ -120,7 +121,7 @@ class Suggestions extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     TextWidget(
-                      label: "Write peotry for a\ngirl named shivani",
+                      label: "what is flutter? and\nwhich company\nmade it?",
                       color: Theme.of(context).canvasColor,
                       fontSize: screenHeight(11),
                       fontWeight: FontWeight.w600,
@@ -155,7 +156,8 @@ class Suggestions extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     TextWidget(
-                      label: "How do I make an HTTP\nrequest in Javascript?",
+                      label:
+                          "Got any creative ideas\nfor a 10 year\n old’s birthday?",
                       color: Theme.of(context).canvasColor,
                       fontSize: screenHeight(10),
                       fontWeight: FontWeight.w600,
