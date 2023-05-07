@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:developer';
 
 import 'package:avatar_glow/avatar_glow.dart';
@@ -242,15 +243,12 @@ class _ChatScreenState extends State<ChatScreen> {
             // ),
             if (_isTyping) ...[
               SpinKitThreeBounce(
-                color: Theme.of(context).appBarTheme.backgroundColor,
-                size: 20,
+                color: Theme.of(context).indicatorColor,
+                size: 23,
               ),
             ],
-            const SizedBox(
-              height: 15,
-            ),
             Container(
-              margin: const EdgeInsets.fromLTRB(10, 80, 10, 0),
+              margin: const EdgeInsets.fromLTRB(10, 10, 10, 0),
               decoration: BoxDecoration(
                 color: Theme.of(context).focusColor,
                 borderRadius: const BorderRadius.all(Radius.circular(30)),
@@ -390,10 +388,13 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   void scrollToBottom() {
-    _listController.animateTo(
-      _listController.position.maxScrollExtent,
-      duration: const Duration(milliseconds: 300),
-      curve: Curves.easeOut,
+    Timer(
+      const Duration(milliseconds: 300),
+      () => _listController.animateTo(
+        _listController.position.maxScrollExtent,
+        duration: const Duration(milliseconds: 600),
+        curve: Curves.easeOut,
+      ),
     );
   }
 

@@ -2,11 +2,9 @@ import 'package:chatgpt/constants/constants.dart';
 import 'package:flutter/material.dart';
 
 class MyTheme {
-  final darkTheme = ThemeData(
+  final ThemeData darkTheme = ThemeData(
     scaffoldBackgroundColor: scaffoldBackgroundDark,
-    // text color
     canvasColor: darkText,
-    // text container color
     focusColor: containerColorDark,
     cardColor: drawerColorDark,
     indicatorColor: iconDark,
@@ -21,14 +19,12 @@ class MyTheme {
     ),
   );
 
-  final lightTheme = ThemeData(
-    // text color & icon color
+  final ThemeData lightTheme = ThemeData(
+    scaffoldBackgroundColor: scaffoldBackgroundLight,
     canvasColor: lightText,
-    // text container color
     focusColor: containerColorLight,
     cardColor: scaffoldBackgroundLight,
     indicatorColor: iconLight,
-    scaffoldBackgroundColor: scaffoldBackgroundLight,
     appBarTheme: AppBarTheme(
       color: lightPrimary,
       iconTheme: const IconThemeData(

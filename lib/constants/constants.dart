@@ -15,6 +15,9 @@ Color? iconLight = const Color(0xff215cec);
 const Color drawerColorLight = Color(0xFFF6F8FE);
 const Color drawerColorDark = Color(0xFF1e1f2f);
 
+const Color darkReceiver = Color(0xFFBE94DF);
+const Color darkSender = Color(0xFF9CAFE9);
+
 enum ResponseType {
   user,
   assistant,
