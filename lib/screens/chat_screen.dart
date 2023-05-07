@@ -136,7 +136,14 @@ class _ChatScreenState extends State<ChatScreen> {
                 leading: const Icon(Iconsax.user_edit),
                 iconColor: Theme.of(context).canvasColor,
                 onTap: () async {
-                  RedirectURL().developerUrl();
+                  final result = await Connectivity().checkConnectivity();
+                  if (!mounted) return;
+                  bool hasInternet = connectivitySnackBar(result);
+                  if (!hasInternet) {
+                    InternetSnackBar.showTopSnackBar(context);
+                  } else {
+                    RedirectURL().developerUrl();
+                  }
                 },
                 title: TextWidget(
                   label: "Developer",
@@ -149,7 +156,14 @@ class _ChatScreenState extends State<ChatScreen> {
                 leading: const Icon(IconlyLight.document),
                 iconColor: Theme.of(context).canvasColor,
                 onTap: () async {
-                  RedirectURL().aboutUrl();
+                  final result = await Connectivity().checkConnectivity();
+                  if (!mounted) return;
+                  bool hasInternet = connectivitySnackBar(result);
+                  if (!hasInternet) {
+                    InternetSnackBar.showTopSnackBar(context);
+                  } else {
+                    RedirectURL().aboutUrl();
+                  }
                 },
                 title: TextWidget(
                   label: "About App",
@@ -184,7 +198,14 @@ class _ChatScreenState extends State<ChatScreen> {
                 leading: const Icon(Iconsax.danger),
                 iconColor: Theme.of(context).canvasColor,
                 onTap: () async {
-                  RedirectURL().issueUrl();
+                  final result = await Connectivity().checkConnectivity();
+                  if (!mounted) return;
+                  bool hasInternet = connectivitySnackBar(result);
+                  if (!hasInternet) {
+                    InternetSnackBar.showTopSnackBar(context);
+                  } else {
+                    RedirectURL().issueUrl();
+                  }
                 },
                 title: TextWidget(
                   label: "Report a problem",
