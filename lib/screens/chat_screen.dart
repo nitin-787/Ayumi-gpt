@@ -9,6 +9,8 @@ import 'package:chatgpt/services/assets_manger.dart';
 import 'package:chatgpt/services/redirect.dart';
 import 'package:chatgpt/services/services.dart';
 import 'package:chatgpt/widgets/chat_widget.dart';
+import 'package:chatgpt/widgets/internet_snackbar.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:iconsax/iconsax.dart';
@@ -359,10 +361,18 @@ class _ChatScreenState extends State<ChatScreen> {
                       ),
                       IconButton(
                         onPressed: () async {
-                          await sendMessage(
-                            modelsProvider: modelsProvider,
-                            chatProvider: chatProvider,
-                          );
+                          final result =
+                              await Connectivity().checkConnectivity();
+                          if (!mounted) return;
+                          bool hasInternet = connectivitySnackBar(result);
+                          if (!hasInternet) {
+                            InternetSnackBar.showTopSnackBar(context);
+                          } else {
+                            await sendMessage(
+                              modelsProvider: modelsProvider,
+                              chatProvider: chatProvider,
+                            );
+                          }
                         },
                         icon: Icon(
                           size: 30,
