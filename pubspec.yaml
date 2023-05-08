@@ -48,10 +48,17 @@ dependencies:
   lottie: ^2.3.2
   connectivity_plus: ^3.0.2
   overlay_support: ^2.0.1
+  flutter_native_splash: ^2.2.19
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+flutter_native_splash:
+  image: assets/images/splashIcon.png
+  color: "#215CEC"
+  image_dark: assets/images/splashIcon.png
+  color_dark: "#191826"
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
