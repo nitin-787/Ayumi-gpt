@@ -1,4 +1,3 @@
-import 'package:chatgpt/constants/constants.dart';
 import 'package:chatgpt/constants/text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -14,60 +13,57 @@ class ChatWidget extends StatelessWidget {
   final int chatIndex;
   @override
   Widget build(BuildContext context) {
+    final bool isSender = chatIndex == 0;
+    final Color boxColor = isSender
+        ? const Color.fromARGB(255, 157, 80, 215)
+        : Theme.of(context).indicatorColor;
+    const Color textColor = Colors.white;
+
     final DateFormat formatter = DateFormat('h:mm a');
 
-    return Row(
-      mainAxisAlignment:
-          chatIndex == 0 ? MainAxisAlignment.end : MainAxisAlignment.start,
-      children: [
-        Container(
-          decoration: BoxDecoration(
-            color: chatIndex == 0 ? darkPrimary : Colors.white,
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(chatIndex == 0 ? 16 : 0),
-              topRight: const Radius.circular(16),
-              bottomLeft: Radius.circular(chatIndex == 0 ? 0 : 16),
-              bottomRight: const Radius.circular(16),
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 4),
+      child: Row(
+        mainAxisAlignment:
+            isSender ? MainAxisAlignment.end : MainAxisAlignment.start,
+        children: [
+          Flexible(
+            child: Container(
+              constraints: BoxConstraints(
+                maxWidth: MediaQuery.of(context).size.width * 0.7,
+              ),
+              child: Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                color: boxColor,
+                elevation: 2,
+                child: Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      TextWidget(
+                        label: msg,
+                        fontSize: 16,
+                        color: textColor,
+                        maxLines: null,
+                        overflow: TextOverflow.clip,
+                      ),
+                      const SizedBox(height: 4),
+                      TextWidget(
+                        label: formatter.format(DateTime.now()),
+                        fontSize: 12,
+                        color: textColor.withOpacity(0.5),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.withOpacity(0.5),
-                spreadRadius: 1,
-                blurRadius: 5,
-                offset: const Offset(0, 1),
-              ),
-            ],
           ),
-          padding: const EdgeInsets.all(8.0),
-          margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              chatIndex == 1
-                  ? TextWidget(
-                      label: "Ayumi",
-                      fontSize: 14,
-                      color: Colors.grey.shade700,
-                      fontWeight: FontWeight.bold,
-                    )
-                  : const SizedBox.shrink(),
-              const SizedBox(height: 4),
-              TextWidget(
-                label: msg,
-                // maxLines: 5,
-                fontSize: 16,
-                color: chatIndex == 0 ? Colors.white : Colors.black,
-              ),
-              const SizedBox(height: 4),
-              TextWidget(
-                label: formatter.format(DateTime.now()),
-                fontSize: 12,
-                color: Colors.grey.shade500,
-              ),
-            ],
-          ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
