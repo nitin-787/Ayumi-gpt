@@ -1,6 +1,6 @@
 ## Ayumi GPT Mobile App
 
-The Ayumi GPT Mobile App is a chatbot mobile application that enables users to have interactive conversations with chatbots powered by the OpenAI GPT (Generative Pre-trained Transformer) model. The app is designed to provide a personalized and conversational experience, bridging the gap between traditional chatbots and human conversations.
+The Ayumi GPT Mobile App is a chatbot mobile application that enables users to have interactive conversations with chatbots powered by the OpenAI GPT model. The app is designed to provide a personalized and conversational experience, bridging the gap between traditional chatbots and human conversations.
 
 
 ### Features
